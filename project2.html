@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div
+    class="main w-full h-[150vh] object-cover bg-[url(https://images.unsplash.com/photo-1757452608866-0b9c2f3e2d6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D)] ">
+    <div class="bg-blue-50 w-[80%] h-[100%] flex justify-center ">
+      <div class=" w-[55%] my-30">
+        <h3 class="text-2xl font-semibold">Register</h3>
+        <p class="mb-4 text-gray-500">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+
+        <!-- Form -->
+        <form id="registrationForm" method="post">
+          <div class="flex items-center gap-7 justify-center ">
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="fname">First Name</label>
+              <input type="text" class="w-65 bg-white mb-1 p-3" placeholder="e.g. John" id="fname">
+              <small class="text-red-600 hidden">First name is required</small>
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="lname">Last Name</label>
+              <input type="text" class="w-66 bg-white mb-1 p-3" placeholder="e.g. Smith" id="lname">
+              <small class="text-red-600 hidden">Last name is required</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="email">Email Address</label>
+              <input type="email" class="w-full bg-white mb-1 p-3" placeholder="e.g. john@your-domain.com" id="email">
+              <small class="text-red-600 hidden">Email is required</small>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-7 justify-center">
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="phone">Phone Number</label>
+              <input type="text" class="w-65 bg-white mb-1 p-3" placeholder="+00 0000 000 0000" id="phone">
+              <small class="text-red-600 hidden">Phone number is required</small>
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="website">Website</label>
+              <input type="text" class="w-65 bg-white mb-1 p-3" placeholder="e.g. https://google.com" id="website">
+              <small class="text-red-600 hidden">Website is required</small>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-7 justify-center">
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="password">Password</label>
+              <input type="password" class="w-65 bg-white mb-1 p-3" placeholder="Your Password" id="password">
+              <small class="text-red-600 hidden">Password is required</small>
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-2 font-semibold" for="re-password">Re-type Password</label>
+              <input type="password" class="w-65 bg-white mb-1 p-3" placeholder="Your Password" id="re-password">
+              <small class="text-red-600 hidden">Re-enter password</small>
+            </div>
+          </div>
+
+          <div class="flex gap-3 justify-center my-10">
+            <input class=" w-6 h-6  " type="checkbox" checked="checked">
+            <label class=""><span class="text-sm text-gray-500">Creating an account means you're okay with our
+                <u>Terms and Conditions</u> and our <u>Privacy Policy</u>.</span></label>
+          </div>
+
+          <input type="submit" value="Register"
+            class="bg-amber-600 font-semibold text-white rounded px-12 py-4">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Validation -->
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // stop form from submitting
+
+      let inputs = document.querySelectorAll("#registrationForm input[type='text'], #registrationForm input[type='email'], #registrationForm input[type='password']");
+      let allValid = true;
+
+      inputs.forEach(function (input) {
+        let error = input.nextElementSibling; // <small> after input
+
+        if (input.value.trim() === "") {
+          error.classList.remove("hidden");
+          input.classList.add("border", "border-red-500");
+          allValid = false;
+        } else {
+          error.classList.add("hidden");
+          input.classList.remove("border", "border-red-500");
+        }
+      });
+
+      if (allValid) {
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+</body>
+</html>
